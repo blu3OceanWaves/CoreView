@@ -40,6 +40,9 @@ def check_warn(condition: bool, message: str):
 def panel_print(title, content, border="bright_blue"):
     console.print(Panel(content, title=f"[bold yellow]{title}[/bold yellow]", border_style=border))
 
+def wait_for_enter():
+    input("\nPress Enter to return to menu...")
+
 # ------------------ Functions ------------------
 
 def get_internal_ip():
@@ -50,6 +53,7 @@ def get_internal_ip():
         ip = "Not available"
     panel_print("Internal IP & Hostname", f"[bold green]Hostname:[/bold green] {hostname}\n[bold cyan]Internal IP:[/bold cyan] {ip}")
     check_warn(ip.startswith("127."), "Internal IP is localhost; network may be inactive")
+    wait_for_enter()
 
 def get_external_ip():
     try:
@@ -57,22 +61,29 @@ def get_external_ip():
     except:
         ip = "Not available"
     panel_print("External IP", f"[bold magenta]External IP:[/bold magenta] {ip}")
+    wait_for_enter()
 
 def get_system_info():
     import platform
     sys_info = {
-        "System": platform.system(),
-        "Release": platform.release(),
+        "OS": platform.system(),
+        "Kernel": platform.release(),
         "Version": platform.version(),
         "Architecture": platform.machine()
     }
-    content = "\n".join([f"[bold cyan]{k}:[/bold cyan] {v}" for k,v in sys_info.items()])
-    panel_print("System Info", content)
+    table = Table(title="System Info")
+    table.add_column("Property", style="cyan", no_wrap=True)
+    table.add_column("Value", style="green")
+    for k, v in sys_info.items():
+        table.add_row(k, v)
+    console.print(table)
+    wait_for_enter()
 
 def get_logged_in_users():
     users = [u.name for u in psutil.users()]
     panel_print("Logged-in Users", "\n".join(users))
     check_warn(len(users) > 3, "Multiple active users may indicate shared access")
+    wait_for_enter()
 
 def list_all_users():
     table = Table(title="All System Users")
@@ -85,10 +96,12 @@ def list_all_users():
         if p.pw_uid == 0 and p.pw_name != "root":
             check_warn(True, f"User {p.pw_name} has root privileges, check!")
     console.print(table)
+    wait_for_enter()
 
 def get_current_user():
     user = getpass.getuser()
     panel_print("Current User", f"[bold green]{user}[/bold green]")
+    wait_for_enter()
 
 def get_processes():
     table = Table(title="Top 5 Processes by CPU Usage")
@@ -98,6 +111,7 @@ def get_processes():
     for p in sorted(psutil.process_iter(['pid','name','cpu_percent']), key=lambda x: x.info['cpu_percent'], reverse=True)[:5]:
         table.add_row(str(p.info['pid']), p.info['name'], str(p.info['cpu_percent']))
     console.print(table)
+    wait_for_enter()
 
 def get_open_ports():
     try:
@@ -106,6 +120,7 @@ def get_open_ports():
         check_warn("0.0.0.0" in result or "::" in result, "Open ports are accessible from any network; ensure firewall rules or port restrictions are applied")
     except Exception as e:
         panel_print("Open Ports", f"Error: {e}", border="red")
+    wait_for_enter()
 
 def find_suid_files():
     try:
@@ -117,6 +132,7 @@ def find_suid_files():
             panel_print("SUID/SGID Files", "None found")
     except Exception as e:
         panel_print("SUID/SGID Files", f"Error: {e}", border="red")
+    wait_for_enter()
 
 def check_firewall():
     try:
@@ -125,6 +141,7 @@ def check_firewall():
         check_warn("inactive" in result.lower(), "Firewall is inactive; consider enabling it or configuring iptables/nftables")
     except:
         panel_print("Firewall Status", "UFW not installed or sudo required", border="red")
+    wait_for_enter()
 
 def ssh_login_attempts():
     try:
@@ -133,6 +150,7 @@ def ssh_login_attempts():
         check_warn("Failed password" in result, "Failed SSH logins detected; consider restricting root login or using fail2ban")
     except:
         panel_print("Recent SSH Login Attempts", "Cannot check logs: sudo may be required", border="red")
+    wait_for_enter()
 
 def check_world_writable():
     try:
@@ -144,6 +162,7 @@ def check_world_writable():
             panel_print("World-Writable Directories", "None found")
     except:
         panel_print("World-Writable Directories", "Cannot check directories: sudo may be required", border="red")
+    wait_for_enter()
 
 def check_cron_jobs():
     try:
@@ -155,14 +174,7 @@ def check_cron_jobs():
             panel_print("Cron Jobs", "None found")
     except:
         panel_print("Cron Jobs", "Cannot check cron jobs: sudo may be required", border="red")
-
-def check_kernel_version():
-    try:
-        version = subprocess.check_output("uname -r", shell=True, text=True).strip()
-        panel_print("Kernel Version", version)
-        check_warn("generic" in version.lower(), "Using generic kernel – ensure updates applied")
-    except:
-        panel_print("Kernel Version", "Could not retrieve kernel version", border="red")
+    wait_for_enter()
 
 # ------------------ Menu ------------------
 
@@ -182,8 +194,7 @@ def menu():
             "[bold cyan]11.[/bold cyan] Recent SSH Login Attempts\n"
             "[bold cyan]12.[/bold cyan] World-Writable Directories\n"
             "[bold cyan]13.[/bold cyan] Cron Jobs\n"
-            "[bold cyan]14.[/bold cyan] Kernel Version\n"
-            "[bold cyan]15.[/bold cyan] Exit",
+            "[bold cyan]14.[/bold cyan] Exit",
             title="[bold yellow]System Info Tool[/bold yellow]",
             border_style="bright_blue"
         ))
@@ -203,8 +214,7 @@ def menu():
         elif choice == "11": ssh_login_attempts()
         elif choice == "12": check_world_writable()
         elif choice == "13": check_cron_jobs()
-        elif choice == "14": check_kernel_version()
-        elif choice == "15":
+        elif choice == "14":
             console.print("[bold green]Exiting[/bold green]")
             break
         else:
