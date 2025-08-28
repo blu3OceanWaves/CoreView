@@ -22,8 +22,8 @@
 
 **Clone the repository**  
 ```bash
-git clone https://github.com/yourusername/simplinfo.git  
-cd simplinfo
+git clone https://github.com/blu3OceanWaves/simplinfo_tool  
+cd simplinfo_tool
 ```
 **Install Python dependencies**  
 ```bash
@@ -34,7 +34,7 @@ pip3 install rich psutil requests
 **Make the tool globally accessible (optional)**  
 ```bash
 sudo cp simplinfo.py /usr/local/bin/simplinfo  
-sudo chmod +x /usr/local/bin/simplinfo`
+sudo chmod +x /usr/local/bin/simplinfo
 ```
 Now you can run it from any directory using:  
 ```bash
