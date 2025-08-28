@@ -20,29 +20,35 @@
 ## Download & Installation
 
 **Clone the repository**  
-`git clone https://github.com/yourusername/simplinfo.git`  
-`cd simplinfo`
-
+```bash
+git clone https://github.com/yourusername/simplinfo.git  
+cd simplinfo
+```
 **Install Python dependencies**  
-`sudo apt update`  
-`sudo apt install python3-pip python3-venv -y`  
-`pip3 install rich psutil requests`
-
+```bash
+sudo apt update  
+sudo apt install python3-pip python3-venv -y  
+pip3 install rich psutil requests
+```
 **Make the tool globally accessible (optional)**  
-`sudo cp simplinfo.py /usr/local/bin/simplinfo`  
-`sudo chmod +x /usr/local/bin/simplinfo`
-
+```bash
+sudo cp simplinfo.py /usr/local/bin/simplinfo  
+sudo chmod +x /usr/local/bin/simplinfo`
+```
 Now you can run it from any directory using:  
-`simplinfo`
-
+```bash
+simplinfo
+```
 ## Usage
 
 Run the tool directly with Python:  
-`python3 simplinfo.py`
-
+```bash
+python3 simplinfo.py
+```
 Or globally if installed:  
-`simplinfo`
-
+```bash
+simplinfo
+```
 Follow the menu to view system information, security insights, and hints. Some features may require **root privileges**.
 
 ## Requirements
