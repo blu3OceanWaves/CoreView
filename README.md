@@ -1,6 +1,6 @@
-# SimplInfo – System & Security Information Tool
+# simplinfo – System & Security Information Tool
 
-**SimplInfo** is a terminal-based Linux utility for system administrators, security professionals, and enthusiasts. It provides a concise overview of system and security information while highlighting potential risks.
+**simplinfo** is a terminal-based Linux utility. It provides a concise overview of system and security information while highlighting potential risks.
 
 ## Features
 
