@@ -26,8 +26,8 @@
 
 **Clone the repository**  
 ```bash
-git clone https://github.com/blu3OceanWaves/simplinfo_tool  
-cd simplinfo_tool
+git clone https://github.com/blu3OceanWaves/CoreView  
+cd CoreView
 ```
 **Install Python dependencies**  
 ```bash
@@ -37,22 +37,22 @@ pip3 install rich psutil requests
 ```
 **Make the tool globally accessible (optional)**  
 ```bash
-sudo cp simplinfo.py /usr/local/bin/simplinfo  
-sudo chmod +x /usr/local/bin/simplinfo
+sudo cp simplinfo.py /usr/local/bin/CoreView  
+sudo chmod +x /usr/local/bin/CoreView
 ```
 Now you can run it from any directory using:  
 ```bash
-simplinfo
+CoreView
 ```
 ## Usage
 
 Run the tool directly with Python:  
 ```bash
-python3 simplinfo.py
+python3 CoreView.py
 ```
 Or globally if installed:  
 ```bash
-simplinfo
+CoreView
 ```
 Follow the menu to view system information, security insights, and hints. Some features may require **root privileges**.
 
@@ -62,6 +62,7 @@ Follow the menu to view system information, security insights, and hints. Some f
 - `rich`  
 - `psutil`  
 - `requests`
+- `speedtest-cli`
 
 ## 📌 Changelog
 
