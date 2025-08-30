@@ -255,11 +255,20 @@ def traceroute():
 
 def speed_test():
     try:
+        # Connectivity check
+        try:
+            requests.get("https://www.google.com", timeout=3)
+        except Exception:
+            panel_print("Network Speed Test", "No internet connection available ❌", border="red")
+            wait_for_enter()
+            return
+
         import speedtest
     except ImportError:
         console.print("[red]speedtest module not installed. Run 'pip install speedtest-cli'[/red]")
         wait_for_enter()
         return
+
     st = speedtest.Speedtest()
     console.print("[yellow]Finding best server...[/yellow]", justify="center")
     st.get_best_server()
@@ -267,8 +276,8 @@ def speed_test():
     up = st.upload() / 1e6
     ping = st.results.ping
     panel_print("Network Speed Test", f"[bold green]Download:[/bold green] {down:.2f} Mbps\n"
-                                         f"[bold green]Upload:[/bold green] {up:.2f} Mbps\n"
-                                         f"[bold cyan]Ping:[/bold cyan] {ping} ms")
+                                     f"[bold green]Upload:[/bold green] {up:.2f} Mbps\n"
+                                     f"[bold cyan]Ping:[/bold cyan] {ping} ms")
     wait_for_enter()
 
 def arp_table():
