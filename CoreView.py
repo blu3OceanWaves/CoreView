@@ -77,7 +77,7 @@ def get_system_info():
         "Version": platform.version(),
         "Architecture": platform.machine()
     }
-    table = Table(title="System Info", show_header=True)
+    table = Table(show_header=True)
     table.add_column("Property", style="cyan", no_wrap=True)
     table.add_column("Value", style="green")
     for k, v in sys_info.items():
