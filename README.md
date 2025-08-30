@@ -1,7 +1,11 @@
-# simplinfo – System & Security Information Tool
+# Coreview – System & Security Information Tool
 
-**simplinfo** is a terminal-based Linux utility. It provides a concise overview of system and security information while highlighting potential risks.
+**~~simplinfo~~** **CoreView** is a terminal-based Linux utility. It provides a concise overview of system and security information ___[with some extras]___ while highlighting potential risks.
+
+**Version 1.0**
 <img width="1907" height="357" alt="image" src="https://github.com/user-attachments/assets/879339d2-5bb3-4821-b888-6e2999b900ba" />
+**Version 2.0**
+<img width="1920" height="782" alt="2025-08-30_03-56" src="https://github.com/user-attachments/assets/eb62c877-49f6-4c52-9967-6d09cbcf1cc7" />
 
 ## Features
 
@@ -58,6 +62,15 @@ Follow the menu to view system information, security insights, and hints. Some f
 - `rich`  
 - `psutil`  
 - `requests`
+
+## 📌 Changelog
+
+**Version 2.0 – 30.08.2025**
+
+## ✨ New 
+### V. 2.0
+- Added **network utilities**: Ping Analyzer, DNS Lookup, Traceroute, Speed Test, ARP Table.  
+- Enhanced **menu panels**  
 
 ## Contact
 
