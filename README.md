@@ -1,6 +1,6 @@
 # Coreview – System & Security Information Tool
 
-**~~simplinfo~~** **CoreView** is a terminal-based Linux utility. It provides a concise overview of system and security information ___[with some extras]___ while highlighting potential risks.
+**~~simplinfo~~** **CoreView** is a terminal-based Linux utility. It provides a <<**concise**>> overview of system and security information ___[with some extras]___ while highlighting potential risks.
 
 **Version 1.0**
 <img width="1907" height="357" alt="image" src="https://github.com/user-attachments/assets/879339d2-5bb3-4821-b888-6e2999b900ba" />
