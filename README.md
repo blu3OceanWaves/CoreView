@@ -1,5 +1,4 @@
-# Coreview – System & Security Information Tool
-
+# [![Typing SVG](https://readme-typing-svg.demolab.com?font=bungee&duration=4000&pause=100&color=F75542&width=435&lines=CoreView;System+%26+Security+Information+Tool)](https://git.io/typing-svg)
 **~~simplinfo~~** **CoreView** is a terminal-based Linux utility. It provides a <<**concise**>> overview of system and security information ___[with some extras]___ while highlighting potential risks.
 
 **Version 1.0**
