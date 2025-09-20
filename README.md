@@ -67,15 +67,15 @@ Follow the menu to view system information, security insights, and hints. Some f
 - **Version 2.0 – 30.08.2025**
 - **Version 2.1 - 30.08.2025**
 
-## ✨ New 
-### V. 2.0
-- Added **network utilities**: Ping Analyzer, DNS Lookup, Traceroute, Speed Test, ARP Table.  
-- Enhanced **menu panels**  
-### V. 2.1
-#### Fixed
-- Option 17 (Network Speed Test) now checks for internet connectivity before running.  
-  Previously, running it immediately after system boot without network caused a Python exception.  
-  Now, a clear message "No internet connection available ❌" is displayed instead.
+## ✨ Versions
+
+| Version | Type | Changes |
+|---------|------|---------|
+| **V. 2.0** | Added | **network utilities**: Ping Analyzer, DNS Lookup, Traceroute, Speed Test, ARP Table. |
+| | Enhanced | **menu panels** |
+| **V. 2.1** | Fixed | Option 17 (Network Speed Test) now checks for internet connectivity before running. Previously, running it immediately after system boot without network caused a Python exception. Now, a clear message "No internet connection available ❌" is displayed instead. |
+
+---
 
 ## Contact
 
